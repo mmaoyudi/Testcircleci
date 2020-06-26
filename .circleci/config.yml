@@ -19,7 +19,7 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run: ant dep
       - run: sleep 25
   two:
     docker:
@@ -33,4 +33,4 @@ workflows:
   one_and_two:
     jobs:
       - one
-      - two
+      # - two
