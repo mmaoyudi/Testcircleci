@@ -63,6 +63,7 @@ jobs:
       - sfdx/install
       - sfdx/auth:
           defaultusername: 3659080903@qq.com
+      - run: echo ./server.key
       - sfdx/scratch-create:
           scratch-alias: circleci
           scratch-config: ./config/project-scratch-def.json
