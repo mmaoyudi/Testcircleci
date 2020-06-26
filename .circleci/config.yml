@@ -44,6 +44,8 @@ version: 2
        - deploy
  jobs:
    deploy:
+    docker:
+#       - image: circleci/ruby:2.4.1
      steps:
        - run:
            name: Install ant
