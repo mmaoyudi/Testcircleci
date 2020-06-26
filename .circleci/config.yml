@@ -13,7 +13,7 @@
 #       - welcome/run
 #       
 version: 2
-deploy:
+jobs:
   steps:
     - run: # Install the AWS CLI if it is not already included in the docker image
          name: Install ant
