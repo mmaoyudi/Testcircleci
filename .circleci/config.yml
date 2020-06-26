@@ -37,7 +37,7 @@
 #       
 version: 2
 
- workflows: # Define a Workflow running the build job, then the deploy job
+ workflows:
    version: 2
    build-deploy:
      jobs:
@@ -45,9 +45,9 @@ version: 2
  jobs:
    deploy:
      steps:
-       - run: # Install the AWS CLI if it is not already included in the docker image
+       - run:
            name: Install ant
            command: sudo pip install ant
-       - run: # Deploy to S3 using the sync command
+       - run:
            name: Deploy to S3
            command: ant dep
