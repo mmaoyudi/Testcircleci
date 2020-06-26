@@ -56,24 +56,24 @@
 #        
 #        
 jobs:
-  install_authenticate:
+  create-open-delete:
     executor: sfdx/default
     steps:
       - checkout
       - sfdx/install
       - sfdx/auth:
           defaultusername: 3659080903@qq.com
-      - run:
-          command: >
-            echo You now have access to the sfdx cli and may execute commands
-            against it.
-
-            sfdx force:auth:list
-          name: Run your SFDX commands here
+      - sfdx/scratch-create:
+          scratch-alias: circleci
+          scratch-config: ./config/project-scratch-def.json
+      - sfdx/scratch-open:
+          scratch-alias: circleci
+      - sfdx/scratch-delete:
+          scratch-alias: circleci
 orbs:
-  sfdx: circleci/salesforce-sfdx@x.y
+  sfdx: circleci/salesforce-sfdx@2.0.0
 version: 2.1
 workflows:
   basic-test:
     jobs:
-      - install_authenticate
+      - create-open-delete
