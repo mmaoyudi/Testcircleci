@@ -55,21 +55,25 @@
 #        #     command: ant dep
 #        
 #        
+jobs:
+  install_authenticate:
+    executor: sfdx/default
+    steps:
+      - checkout
+      - sfdx/install
+      - sfdx/auth:
+          defaultusername: 3659080903@qq.com
+      - run:
+          command: >
+            echo You now have access to the sfdx cli and may execute commands
+            against it.
+
+            sfdx force:auth:list
+          name: Run your SFDX commands here
+orbs:
+  sfdx: circleci/salesforce-sfdx@x.y
 version: 2.1
- orbs:
-   sfdx: circleci/salesforce-sfdx@x.y
- jobs:
-   install_authenticate:
-     executor: sfdx/default
-     steps:
-       - checkout
-       - sfdx/install
-       - sfdx/auth:
-           defaultusername: 365908090@qq.com
-       - run:
-           name: Run your SFDX commands here
-           command: sfdx
- workflows:
-   basic-test:
-     jobs:
-       - install_authenticate
+workflows:
+  basic-test:
+    jobs:
+      - install_authenticate
