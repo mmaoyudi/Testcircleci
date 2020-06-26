@@ -12,28 +12,28 @@
 #     jobs:
 #       - welcome/run
 #       
-version: 2
-jobs:
-  one:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: npm install
-      # - run: sleep 25
-  two:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A more familiar hi"
-      - run: sleep 15
-workflows:
-  version: 2
-  one_and_two:
-    jobs:
-      - one
-      # - two
+# version: 2
+# jobs:
+#   one:
+#     docker:
+#       - image: circleci/ruby:2.4.1
+#     steps:
+#       - checkout
+#       - run: echo "A first hello"
+#       - run: sleep 25
+#   two:
+#     docker:
+#       - image: circleci/ruby:2.4.1
+#     steps:
+#       - checkout
+#       - run: echo "A more familiar hi"
+#       - run: sleep 15
+# workflows:
+#   version: 2
+#   one_and_two:
+#     jobs:
+#       - one
+#       - two
 #       
 # version: 2
 #  workflows:
@@ -53,3 +53,23 @@ workflows:
 #        # - run:
 #        #     name: Deploy to S3
 #        #     command: ant dep
+#        
+#        
+version: 2.1
+ orbs:
+   sfdx: circleci/salesforce-sfdx@x.y
+ jobs:
+   install_authenticate:
+     executor: sfdx/default
+     steps:
+       - checkout
+       - sfdx/install
+       - sfdx/auth:
+           defaultusername: 365908090@qq.com
+       - run:
+           name: Run your SFDX commands here
+           command: sfdx
+ workflows:
+   basic-test:
+     jobs:
+       - install_authenticate
