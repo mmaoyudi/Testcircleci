@@ -63,6 +63,7 @@ jobs:
       - sfdx/install
       - sfdx/auth:
           defaultusername: 3659080903@qq.com
+          clientid: 3MVG9g9rbsTkKnAUwzHDlaG9ymLyoRu2159wRvztE9UG8wObT8PbkxKzgM.wPsWewYSKJR9xTYX_o.B_G301F
       - sfdx/scratch-create:
           scratch-alias: circleci
           scratch-config: ./config/project-scratch-def.json
