@@ -13,26 +13,8 @@
 #       - welcome/run
 #       
 version: 2
-jobs:
-  one:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - run: # Install the AWS CLI if it is not already included in the docker image
-           name: Install awscli
-           command: sudo pip install awscli
-       - run: # Deploy to S3 using the sync command
-      # - run: sleep 25
-  two:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: ant dep
-      - run: sleep 15
-workflows:
-  version: 2
-  one_and_two:
-    jobs:
-      - one
-      - two
+deploy:
+  steps:
+    - run: # Install the AWS CLI if it is not already included in the docker image
+         name: Install ant
+         command: sudo pip install ant
