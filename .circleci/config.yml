@@ -19,7 +19,7 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: bundle install ant
+      - run: pip install ant
       # - run: sleep 25
   two:
     docker:
