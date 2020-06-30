@@ -58,8 +58,8 @@
 jobs:
   create-open-delete:
     executor: sfdx/default
-    environment:
-      RES: res
+    # environment:
+    #   RES: res
     steps:
       - checkout
       - sfdx/install
