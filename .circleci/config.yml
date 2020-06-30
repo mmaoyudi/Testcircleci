@@ -73,7 +73,7 @@ jobs:
           scratch-alias: circleci
       - run:
         name: Upload Failed Tests
-        command: curl --data '{"text": "これは、チャンネル内のテキスト行です。そしてもう1つテキスト行があります。"}'  https://hooks.slack.com/services/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
+        command: curl -X POST --data-urlencode "payload={\"channel\": \"#random\", \"username\": \"webhookbot\", \"text\": \"これは webhookbot という名のボットから #random に投稿されています。\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
 
       curl
 orbs:
