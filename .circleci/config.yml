@@ -80,7 +80,7 @@ jobs:
           channel: '#general'
           color: '#42e2f4'
           mentions: 'USERID1,USERID2,'
-          message: This is a custom message notification $BASH_ENV
+          message: 'This is a custom message notification $BASH_ENV'
           webhook: '${SLACK_WEBHOOK}'
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
