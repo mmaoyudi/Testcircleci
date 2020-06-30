@@ -58,6 +58,8 @@
 jobs:
   create-open-delete:
     executor: sfdx/default
+    environment:
+      RES: res
     steps:
       - checkout
       - sfdx/install
@@ -70,7 +72,7 @@ jobs:
       #     scratch-config: ./config/project-scratch-def.json
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
-      - run:  echo "sfdx force:org:list" >> $BASH_ENV
+      - run:  sfdx force:org:list >> $RES
       # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
@@ -80,7 +82,7 @@ jobs:
           channel: '#general'
           color: '#42e2f4'
           mentions: 'USERID1,USERID2,'
-          message: 'This is a custom message notification $BASH_ENV'
+          message: 'This is a custom message notification $RES'
           webhook: '${SLACK_WEBHOOK}'
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
