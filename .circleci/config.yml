@@ -75,11 +75,8 @@ jobs:
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
-          echo 'export VERY_IMPORTANT=$(sfdx force:org:list)' >> $BASH_ENV
-          source $BASH_ENV
-      - run: echo $VERY_IMPORTANT
-      - run: |
-              echo $VERY_IMPORTANT
+          sfdx force:org:list >> /tmp/ss.txt
+      - run: cat /tmp/ss.txt
       # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
@@ -89,7 +86,7 @@ jobs:
           channel: '#general'
           color: '#42e2f4'
           mentions: 'USERID1,USERID2,'
-          message: 'This is a custom message notification $VERY_IMPORTANT'
+          message: 'This is a custom message notification $RES'
           webhook: '${SLACK_WEBHOOK}'
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
