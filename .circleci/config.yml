@@ -68,13 +68,18 @@ jobs:
       - sfdx/scratch-create:
           scratch-alias: circleci
           scratch-config: ./config/project-scratch-def.json
+
+      - run: sfdx force:user:password:generate -u circleci >> ${TTTTT}
+
       - sfdx/scratch-open:
           scratch-alias: circleci
+
+
       - slack/notify:
           channel: '#general'
           color: '#42e2f4'
           mentions: 'USERID1,USERID2,'
-          message: This is a custom message notification
+          message: This is a custom message notification ${TTTTT}
           webhook: '${SLACK_WEBHOOK}'
       - sfdx/scratch-delete:
           scratch-alias: circleci
