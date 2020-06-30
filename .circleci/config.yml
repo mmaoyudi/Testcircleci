@@ -64,19 +64,20 @@ jobs:
       - sfdx/auth:
           defaultusername: 3659080903@qq.com
       - run: echo ./server.key
+
+      - sfdx/scratch-create:
+          scratch-alias: circleci
+          scratch-config: ./config/project-scratch-def.json
+      - sfdx/scratch-open:
+          scratch-alias: circleci
       - slack/notify:
           channel: '#general'
           color: '#42e2f4'
           mentions: 'USERID1,USERID2,'
           message: This is a custom message notification
           webhook: '${SLACK_WEBHOOK}'
-      # - sfdx/scratch-create:
-      #     scratch-alias: circleci
-      #     scratch-config: ./config/project-scratch-def.json
-      # - sfdx/scratch-open:
-      #     scratch-alias: circleci
-      # - sfdx/scratch-delete:
-      #     scratch-alias: circleci
+      - sfdx/scratch-delete:
+          scratch-alias: circleci
       # - run:
       #   name: Upload Failed Tests
       #   command: curl -X POST --data-urlencode "payload={\"channel\": \"#random\", \"username\": \"webhookbot\", \"text\": \"これは webhookbot という名のボットから #random に投稿されています。\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
