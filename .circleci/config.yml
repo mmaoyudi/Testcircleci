@@ -70,8 +70,15 @@ jobs:
       #     scratch-config: ./config/project-scratch-def.json
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
-      - run: export RES="sfdx force:org:list"
-      - run: echo "xyz=abc=$RES"
+      - run:
+          name: Setup Path
+          command: |
+            echo 'export RES=Tem' >> $BASH_ENV
+      - run:
+          name: Setup File
+          command: |
+            sfdx force:org:list > $RES
+      # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
 
@@ -80,7 +87,7 @@ jobs:
           channel: '#general'
           color: '#42e2f4'
           mentions: 'USERID1,USERID2,'
-          message: "This is a custom message notification $RES" 
+          message: 'This is a custom message notification $RES'
           webhook: '${SLACK_WEBHOOK}'
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
