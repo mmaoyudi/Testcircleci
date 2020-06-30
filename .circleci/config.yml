@@ -76,8 +76,7 @@ jobs:
             echo 'export RES=Tem' >> $BASH_ENV
       - run:
           name: Setup File
-          command: |
-            sfdx force:org:list > $RES
+          command:  sfdx force:org:list > $RES
       # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
