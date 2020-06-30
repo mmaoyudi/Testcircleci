@@ -73,8 +73,8 @@ jobs:
       - run: sfdx force:org:list
       - run: sfdx force:org:list  | sed -e ':loop' -e 'N; $!b loop' -e 's/\n//g' | sed 's/ //g' | sed 's/(//g' | sed 's/)//g' >> '$BASH_ENV'
       - run: echo '$BASH_ENV'
-      - run: echo '${BASH_ENV}'
-      - run: echo '${SLACK_WEBHOOK}'
+      - run: echo $SLACK_WEBHOOK
+      - run: echo ${SLACK_WEBHOOK}
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
 
