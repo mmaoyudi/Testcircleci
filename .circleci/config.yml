@@ -73,7 +73,7 @@ jobs:
           scratch-alias: circleci
       - run:
         name: Upload Failed Tests
-        command: curl --data '{"text": "これは、チャンネル内のテキスト行です。そしてもう1つテキスト行があります。"}'  https://hooks.slack.com/services/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
+        command: curl --data '{"text": "これは、チャンネル内のテキスト行です。そしてもう1つテキスト行があります。"}'  https://hooks.slack.com/services/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
 
       curl
 orbs:
