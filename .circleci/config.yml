@@ -71,6 +71,11 @@ jobs:
           scratch-alias: circleci
       - sfdx/scratch-delete:
           scratch-alias: circleci
+      - run:
+        name: Upload Failed Tests
+        command: curl --data '{"text": "これは、チャンネル内のテキスト行です。そしてもう1つテキスト行があります。"}'  https://hooks.slack.com/services/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
+
+      curl
 orbs:
   sfdx: circleci/salesforce-sfdx@2.0.0
 version: 2.1
