@@ -70,6 +70,7 @@ jobs:
       #     scratch-config: ./config/project-scratch-def.json
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
+      - run: sfdx force:org:list
       - run: sfdx force:org:list  | sed -e ':loop' -e 'N; $!b loop' -e 's/\n//g' | sed 's/ //g' >> $BASH_ENV
       - run: echo '$BASH_ENV'
       - run: echo '${BASH_ENV}'
