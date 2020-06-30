@@ -71,9 +71,9 @@ jobs:
           scratch-alias: circleci
       - sfdx/scratch-delete:
           scratch-alias: circleci
-      - run:
-        name: Upload Failed Tests
-        command: curl -X POST --data-urlencode "payload={\"channel\": \"#random\", \"username\": \"webhookbot\", \"text\": \"これは webhookbot という名のボットから #random に投稿されています。\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
+      # - run:
+      #   name: Upload Failed Tests
+      #   command: curl -X POST --data-urlencode "payload={\"channel\": \"#random\", \"username\": \"webhookbot\", \"text\": \"これは webhookbot という名のボットから #random に投稿されています。\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
 
       curl
 orbs:
