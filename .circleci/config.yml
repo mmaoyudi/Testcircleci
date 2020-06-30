@@ -71,7 +71,9 @@ jobs:
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
       - run: ls  >> $BASH_ENV
-
+      - run: echo $BASH_ENV
+      echo '${BASH_ENV}'
+      echo '${SLACK_WEBHOOK}'
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
 
