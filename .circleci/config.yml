@@ -84,7 +84,7 @@ jobs:
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
-          sfdx force:user:password:generate -u circleci1 >> /tmp/ss.txt
+          sfdx force:user:password:generate -u circleci1 | sed 's/"/------/g' >> /tmp/ss.txt
       - run: cat /tmp/ss.txt
 
       # - run:
