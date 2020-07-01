@@ -67,15 +67,19 @@ jobs:
           defaultusername: 3659080903@qq.com
       - run: echo ./server.key
 
-      - sfdx/scratch-create:
-          scratch-alias: circleci
-          scratch-config: ./config/project-scratch-def.json
+      # - sfdx/scratch-create:
+      #     scratch-alias: ${CIRCLE_WORKFLOW_ID}
+      #     scratch-config: ./config/project-scratch-def.json
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
+      # - run:
+      #    name: 実行時の PATH 書き換えおよび環境変数定義
+      #    command: |
+      #     sfdx force:user:password:generate -u ${CIRCLE_WORKFLOW_ID} >> /tmp/ss.txt
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
-          sfdx force:user:password:generate -u circleci >> /tmp/ss.txt
+          sfdx force:org:list -u ${CIRCLE_WORKFLOW_ID} >> /tmp/ss.txt
       - run: |
           echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
           source $BASH_ENV
