@@ -111,7 +111,6 @@ jobs:
       - slack/status:
           fail_only: true
           mentions: USERID1,USERID2
-          message: '${CIRCLE_BRANCH} $VERY_IMPORTANT'
           webhook: webhook
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
