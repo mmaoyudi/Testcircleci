@@ -92,7 +92,8 @@ jobs:
       #    name: 実行時の PATH 書き換えおよび環境変数定義
       #    command: |
       #     sfdx force:org:list --all  >> /tmp/ss.txt
-      - run: |
+      - run: 
+          command: |
             echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
             source $BASH_ENV
           when: always
