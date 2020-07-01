@@ -97,7 +97,7 @@ jobs:
       - run: echo $VERY_IMPORTANT
       - run:
           name: Step 3
-          command: echo "This is Step 3"
+          command: exit 0
           when: always
       # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
