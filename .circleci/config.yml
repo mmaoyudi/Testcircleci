@@ -108,13 +108,11 @@ jobs:
           message: '${CIRCLE_BRANCH} $VERY_IMPORTANT'
           webhook: '${SLACK_WEBHOOK}'
 
-      - slack/notify:
+      - slack/status:
           fail_only: true
-          channel: '#general'
-          color: '#42e2f4'
-          mentions: 'USERID1,USERID2,'
+          mentions: USERID1,USERID2
           message: '${CIRCLE_BRANCH} $VERY_IMPORTANT'
-          webhook: '${SLACK_WEBHOOK}'
+          webhook: webhook
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
       # - run:
