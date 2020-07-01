@@ -63,6 +63,7 @@ jobs:
     steps:
       - checkout
       - sfdx/install
+      - run: export SFDX_CONSUMER_KEY=ttt' >> $BASH_ENV
       - sfdx/auth:
           defaultusername: 3659080903@qq.com
       - run: echo ./server.key
