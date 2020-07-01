@@ -85,6 +85,7 @@ jobs:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
           sfdx force:user:password:generate -u circleci1 | sed 's/"/------/g' >> /tmp/ss.txt
+        when: always
       - run: cat /tmp/ss.txt
 
       # - run:
@@ -92,19 +93,25 @@ jobs:
       #    command: |
       #     sfdx force:org:list --all  >> /tmp/ss.txt
       - run: |
-          echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
-          source $BASH_ENV
-      - run: echo $VERY_IMPORTANT
-      - run:
-          name: Step 3
-          command: exit 0
+            echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
+            source $BASH_ENV
           when: always
+      - run: echo $VERY_IMPORTANT
+
       # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
 
 
       - slack/notify:
+          channel: '#general'
+          color: '#42e2f4'
+          mentions: 'USERID1,USERID2,'
+          message: '${CIRCLE_BRANCH} $VERY_IMPORTANT'
+          webhook: '${SLACK_WEBHOOK}'
+
+      - slack/notify:
+          fail_only: true
           channel: '#general'
           color: '#42e2f4'
           mentions: 'USERID1,USERID2,'
