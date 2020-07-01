@@ -95,7 +95,10 @@ jobs:
           echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
           source $BASH_ENV
       - run: echo $VERY_IMPORTANT
-        when: always
+      - run:
+          name: Step 3
+          command: echo "This is Step 3"
+          when: always
       # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
