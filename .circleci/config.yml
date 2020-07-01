@@ -111,7 +111,7 @@ jobs:
       - slack/status:
           fail_only: true
           mentions: USERID1,USERID2
-          webhook: webhook
+          webhook: '${SLACK_WEBHOOK}'
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
       # - run:
