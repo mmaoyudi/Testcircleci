@@ -77,7 +77,7 @@ jobs:
           scratch-alias: circleci1
           scratch-config: ./config/project-scratch-def.json
 
-      # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
+      # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV1
       - sfdx/scratch-open:
               scratch-alias: circleci1
       - run: sfdx force:user:password:generate -u circleci1
