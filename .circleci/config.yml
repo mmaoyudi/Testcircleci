@@ -93,6 +93,7 @@ jobs:
       #    command: |
       #     sfdx force:org:list --all  >> /tmp/ss.txt
       - run: 
+          name: Setp
           command: |
             echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
             source $BASH_ENV
