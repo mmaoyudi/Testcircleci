@@ -76,17 +76,17 @@ jobs:
       #     scratch-config: ./config/project-scratch-def.json
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
-      - run:
-         name: 実行時の PATH 書き換えおよび環境変数定義
-         command: |
-          sfdx force:user:password:generate -u 00DS0000003TFHQMA4 >> /tmp/ss.txt
+      # - run:
+      #    name: 実行時の PATH 書き換えおよび環境変数定義
+      #    command: |
+      #     sfdx force:user:password:generate -u 00DS0000003TFHQMA4 >> /tmp/ss.txt
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
           sfdx force:org:list >> /tmp/ss.txt
-      # - run: |
-      #     echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
-      #     source $BASH_ENV
+      - run: |
+          echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
+          source $BASH_ENV
       # - run: sfdx force:org:list >> /tmp/artifacts.txt
       # - sfdx/scratch-open:
       #     scratch-alias: circleci
