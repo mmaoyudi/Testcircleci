@@ -79,7 +79,7 @@ jobs:
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
-          sfdx force:user:password:generate -targetusername mmmmm@testtt.com >> /tmp/ss.txt
+          sfdx force:user:password:generate --targetusername mmmmm@testtt.com >> /tmp/ss.txt
       # - run:
       #    name: 実行時の PATH 書き換えおよび環境変数定義
       #    command: |
