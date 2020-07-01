@@ -64,7 +64,7 @@ jobs:
       - checkout
       - sfdx/install
       - run: echo $SFDX_JWT_KEY | base64 --decode --ignore-garbage > ./server.key
-      - run: sfdx force:auth:jwt:grant --clientid ${SFDX_CONSUMER_KEY} --jwtkeyfile ./server.key --username 3659080903@qq.com --setdefaultdevhubusername --setalias ${CIRCLE_PROJECT_REPONAME}-${CIRCLE_BRANCH}
+      - run: sfdx force:auth:jwt:grant --clientid ${SFDX_CONSUMER_KEY} --jwtkeyfile ./server.key --username 365908090xx2@qq.com --setdefaultdevhubusername --setalias ${CIRCLE_PROJECT_REPONAME}-${CIRCLE_BRANCH}
       # - sfdx/auth:
       #     defaultusername: 3659080903@qq.com
       - run: echo ./server.key
