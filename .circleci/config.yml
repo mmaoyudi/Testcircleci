@@ -107,7 +107,6 @@ jobs:
           mentions: 'USERID1,USERID2,'
           message: '${CIRCLE_BRANCH} $VERY_IMPORTANT'
           webhook: '${SLACK_WEBHOOK}'
-      when: always
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
       # - run:
