@@ -74,16 +74,16 @@ jobs:
       # - run: echo ${CIRCLE_PREVIOUS_BUILD_NUM}
       # - run: echo ${CIRCLE_NODE_INDEX}
       - sfdx/scratch-create:
-          scratch-alias: circleci
+          scratch-alias: circleci1
           scratch-config: ./config/project-scratch-def.json
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
       - sfdx/scratch-open:
-              scratch-alias: circleci
+              scratch-alias: circleci1
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
-          sfdx force:user:password:generate -u circleci >> /tmp/ss.txt
+          sfdx force:user:password:generate -u circleci1 >> /tmp/ss.txt
       # - run:
       #    name: 実行時の PATH 書き換えおよび環境変数定義
       #    command: |
