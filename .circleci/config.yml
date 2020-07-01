@@ -83,8 +83,7 @@ jobs:
       - run: sfdx force:user:password:generate -u circleci1
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
-         command: |
-          sfdx force:user:password:generate -u circleci1 | sed 's/"/------/g' >> /tmp/ss.txt
+         command: sfdx force:user:password:generate -u circleci1 | sed 's/"/------/g' >> /tmp/ss.txt
         when: always
       - run: cat /tmp/ss.txt
 
@@ -94,9 +93,7 @@ jobs:
       #     sfdx force:org:list --all  >> /tmp/ss.txt
       - run: 
           name: Setp
-          command: |
-            echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
-            source $BASH_ENV
+          command: echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV source $BASH_ENV
           when: always
       - run: echo $VERY_IMPORTANT
 
