@@ -69,6 +69,7 @@ jobs:
       #     defaultusername: 3659080903@qq.com
       - run: echo ./server.key
       - run: echo ${CIRCLE_BUILD_NUM}
+      - run: echo ${CIRCLE_PREVIOUS_BUILD_NUM}
       # - sfdx/scratch-create:
       #     scratch-alias: ${CIRCLE_WORKFLOW_ID}
       #     scratch-config: ./config/project-scratch-def.json
