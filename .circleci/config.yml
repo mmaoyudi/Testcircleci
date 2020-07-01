@@ -68,19 +68,21 @@ jobs:
       # - sfdx/auth:
       #     defaultusername: 3659080903@qq.com
       - run: echo ./server.key
-      - run: sfdx force:org:create adminEmail=me@email.com edition=Developer username=admin_user@orgname.org -a TTTT >> $BASH_ENV
+      # - run: sfdx force:org:create adminEmail=me@email.com edition=Developer username=admin_user@orgname.org -a TTTT >> $BASH_ENV
       # - run: echo ${CIRCLE_BUILD_NUM}
       # - run: echo ${CIRCLE_PREVIOUS_BUILD_NUM}
       # - run: echo ${CIRCLE_NODE_INDEX}
-      # - sfdx/scratch-create:
-      #     scratch-alias: circleci
-      #     scratch-config: ./config/project-scratch-def.json
+      - sfdx/scratch-create:
+          scratch-alias: circleci
+          scratch-config: ./config/project-scratch-def.json
 
       # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
+      - sfdx/scratch-open:
+              scratch-alias: circleci
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
-          sfdx force:user:password:generate --targetusername admin_user@orgname.org >> /tmp/ss.txt
+          sfdx force:user:password:generate -u circleci >> /tmp/ss.txt
       # - run:
       #    name: 実行時の PATH 書き換えおよび環境変数定義
       #    command: |
