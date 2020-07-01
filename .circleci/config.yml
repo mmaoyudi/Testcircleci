@@ -68,7 +68,7 @@ jobs:
       # - sfdx/auth:
       #     defaultusername: 3659080903@qq.com
       - run: echo ./server.key
-      - run: sfdx force:org:create adminEmail=me@email.com edition=Developer username=admin_user@orgname.org -a TTTT
+      - run: sfdx force:org:create adminEmail=me@email.com edition=Developer username=admin_user@orgname.org -a TTTT >> $BASH_ENV
       # - run: echo ${CIRCLE_BUILD_NUM}
       # - run: echo ${CIRCLE_PREVIOUS_BUILD_NUM}
       # - run: echo ${CIRCLE_NODE_INDEX}
