@@ -79,7 +79,7 @@ jobs:
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
-          sfdx force:user:password:generate -u ${CIRCLE_WORKFLOW_ID} >> /tmp/ss.txt
+          sfdx force:user:password:generate -u 00DS0000003TFHQMA4 >> /tmp/ss.txt
       - run:
          name: 実行時の PATH 書き換えおよび環境変数定義
          command: |
