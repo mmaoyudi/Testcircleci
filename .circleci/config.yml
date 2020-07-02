@@ -167,11 +167,20 @@ jobs:
           name: deploy_step
           command: echo 'execute deploy job1'
 
+  deploy-job2:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - run:
+          name: deploy_step
+          command: echo 'execute deploy job2'
+
 workflows:
   test-and-deploy:
     jobs:
       - test-job
-      - deploy-job:
+      - deploy-job2:
           requires:
             - test-job
           filters:
