@@ -125,11 +125,11 @@ jobs:
       #   channel: '#general'
       #   fail_only: true
         # only_for_branches: <<parameters.only_for_branches>>
-  basic-test:
+  - basic-test:
     - run: echo basic-test
-  basic-test_stage:
+  - basic-test_stage:
     - run: echo basic-test
-  test_pre-prod:
+  - test_pre-prod:
     - run: echo basic-test
 orbs:
   sfdx: circleci/salesforce-sfdx@2.0.0
