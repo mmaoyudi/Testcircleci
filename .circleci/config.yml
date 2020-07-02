@@ -57,15 +57,13 @@
 #        
 jobs:
   test_dev:
-    steps:
-      - run: echo basic-test
+    - run: echo basic-test
   test_stage:
-    steps:
       - run: echo basic-test
   test_pre-prod:
-    steps:
-      - run: echo basic-test
+    - run: echo basic-test
   create-open-delete:
+    steps:
     executor: sfdx/default
     # environment:
     #   RES: res
