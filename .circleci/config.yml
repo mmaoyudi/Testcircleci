@@ -179,7 +179,7 @@ workflows:
               only:
                 - master
 
-      - deploy-job:
+      - deploy-job1:
           filters:
             branches:
               only:
