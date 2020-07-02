@@ -139,8 +139,6 @@ version: 2.1 # executorsのみ2.1の機能を使っていますが、それ以�
 executors:
   default:
     working_directory: ~/sample
-    docker:
-      - image: hoge/hoge:latest
 jobs:
   test-job:
     executor:
