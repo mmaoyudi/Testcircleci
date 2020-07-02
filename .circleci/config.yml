@@ -54,7 +54,12 @@
 #        #     name: Deploy to S3
 #        #     command: ant dep
 #        
-#        
+version: 2.1 # executorsのみ2.1の機能を使っていますが、それ以外は2.0の機能です
+executors:
+  default:
+    working_directory: ~/sample
+    docker:
+      - image: hoge/hoge:latest
 jobs:
   test-job:
     executor:
@@ -144,7 +149,6 @@ jobs:
 orbs:
   sfdx: circleci/salesforce-sfdx@2.0.0
   slack: circleci/slack@3.4.2
-version: 2.1
 workflows:
   test-and-deploy:
     jobs:
