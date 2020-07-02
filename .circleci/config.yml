@@ -113,6 +113,7 @@ jobs:
           mentions: USERID1,USERID2
           channel: '#general'
           webhook: '${SLACK_WEBHOOK}'
+          failure_message: 'tttt'
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
       # - run:
