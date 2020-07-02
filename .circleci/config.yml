@@ -56,12 +56,12 @@
 #        
 #        
 jobs:
-  - test_dev:
-    - run: echo basic-test
-  - test_stage:
+  # test_dev:
+    # - run: echo basic-test
+  test_stage:
       - run: echo basic-test
-  - test_pre-prod:
-    - run: echo basic-test
+  # test_pre-prod:
+  #   - run: echo basic-test
   # create-open-delete:
   #   steps:
   #   executor: sfdx/default
