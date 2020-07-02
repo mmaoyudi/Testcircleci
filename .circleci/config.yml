@@ -56,7 +56,7 @@
 #        
 #        
 jobs:
-  create-open-delete:
+  - create-open-delete:
     executor: sfdx/default
     # environment:
     #   RES: res
