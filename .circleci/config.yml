@@ -56,12 +56,21 @@
 #        
 #        
 jobs:
-  # test_dev:
-    # - run: echo basic-test
-  test_stage:
-      - run: echo basic-test
-  # test_pre-prod:
-  #   - run: echo basic-test
+  test-job:
+    executor:
+      name: default
+    steps:
+      - run:
+          name: test_step
+          command: echo 'execute test job'
+  deploy-job:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - run:
+          name: deploy_step
+          command: echo 'execute deploy job'
   # create-open-delete:
   #   steps:
   #   executor: sfdx/default
@@ -137,20 +146,30 @@ orbs:
   slack: circleci/slack@3.4.2
 version: 2.1
 workflows:
-  basic-test:
+  test-and-deploy:
     jobs:
-      #- create-open-delete
-      - test_dev:
-          filters:  # ブランチ全体にマッチさせる正規表現フィルターを使う
-            branches:
-              only:  # 下記の正規表現フィルターにマッチするブランチのみが実行される
-                - dev
-                - /user-.*/
-      - test_stage:
+      - test-job
+      - deploy-job:
+          requires:
+            - test-job
           filters:
             branches:
-              only: testb
-      - test_pre-prod:
-          filters:
-            branches:
-              only: /pre-prod(?:-.+)?$/
+              only:
+                - master
+  # basic-test:
+  #   jobs:
+  #     #- create-open-delete
+  #     - test_dev:
+  #         filters:  # ブランチ全体にマッチさせる正規表現フィルターを使う
+  #           branches:
+  #             only:  # 下記の正規表現フィルターにマッチするブランチのみが実行される
+  #               - dev
+  #               - /user-.*/
+  #     - test_stage:
+  #         filters:
+  #           branches:
+  #             only: testb
+  #     - test_pre-prod:
+  #         filters:
+  #           branches:
+  #             only: /pre-prod(?:-.+)?$/
