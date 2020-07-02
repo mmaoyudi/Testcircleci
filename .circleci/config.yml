@@ -119,6 +119,10 @@ jobs:
       #   command: curl -X POST --data-urlencode "payload={\"channel\": \"#random\", \"username\": \"webhookbot\", \"text\": \"これは webhookbot という名のボットから #random に投稿されています。\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
 
       # curl
+      - status:
+        channel: '#general'
+        fail_only: true
+        # only_for_branches: <<parameters.only_for_branches>>
 orbs:
   sfdx: circleci/salesforce-sfdx@2.0.0
   slack: circleci/slack@3.4.2
