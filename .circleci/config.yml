@@ -158,6 +158,15 @@ jobs:
           name: deploy_step
           command: echo 'execute deploy job'
 
+  deploy-job1:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - run:
+          name: deploy_step
+          command: echo 'execute deploy job1'
+
 workflows:
   test-and-deploy:
     jobs:
@@ -169,3 +178,9 @@ workflows:
             branches:
               only:
                 - master
+
+      - deploy-job:
+          filters:
+            branches:
+              only:
+                - testb
