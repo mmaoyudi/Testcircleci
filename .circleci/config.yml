@@ -131,11 +131,11 @@ orbs:
 workflows:
   version: 2
   build-n-deploy:
-  jobs:
-    - basic-test:
-        filters:  # タグフィルター付き、かつ「build」を requires している「deploy」に必要
-          tags:
-            only: /.*/
+    jobs:
+      - basic-test:
+          filters:  # タグフィルター付き、かつ「build」を requires している「deploy」に必要
+            tags:
+              only: /.*/
   # basic-test:
   #   jobs:
   #     - create-open-delete
