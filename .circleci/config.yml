@@ -159,8 +159,6 @@ workflows:
             branches:
               only: /.*/
       - create-open-delete1:
-          requires:
-            - build
           filters:
             tags:
               only: /^v.*/
