@@ -57,63 +57,64 @@
 #        
 jobs:
   create-open-delete:
-    executor: sfdx/default
-    # environment:
-    #   RES: res
-    steps:
-      - checkout
-      - sfdx/install
-      - run: echo $SFDX_JWT_KEY | base64 --decode --ignore-garbage > ./server.key
-      - run: cat ./server.key
-      - run: sfdx force:auth:jwt:grant --clientid ${SFDX_CONSUMER_KEY} --jwtkeyfile ./server.key --username 365908090xx2@qq.com --setdefaultdevhubusername --setalias ${CIRCLE_PROJECT_REPONAME}-${CIRCLE_BRANCH}
-      # - sfdx/auth:
-      #     defaultusername: 3659080903@qq.com
-      - run: echo ./server.key
-      - run: sfdx force:org:create adminEmail=me@email.com edition=Developer username=admin_user@orgname.org -a TTTT >> $BASH_ENV
-      # - run: echo ${CIRCLE_BUILD_NUM}
-      # - run: echo ${CIRCLE_PREVIOUS_BUILD_NUM}
-      # - run: echo ${CIRCLE_NODE_INDEX}
-      - sfdx/scratch-create:
-          scratch-alias: circleci1
-          scratch-config: ./config/project-scratch-def.json
+    - run: echo 123
+    # executor: sfdx/default
+    # # environment:
+    # #   RES: res
+    # steps:
+    #   - checkout
+    #   - sfdx/install
+    #   - run: echo $SFDX_JWT_KEY | base64 --decode --ignore-garbage > ./server.key
+    #   - run: cat ./server.key
+    #   - run: sfdx force:auth:jwt:grant --clientid ${SFDX_CONSUMER_KEY} --jwtkeyfile ./server.key --username 365908090xx2@qq.com --setdefaultdevhubusername --setalias ${CIRCLE_PROJECT_REPONAME}-${CIRCLE_BRANCH}
+    #   # - sfdx/auth:
+    #   #     defaultusername: 3659080903@qq.com
+    #   - run: echo ./server.key
+    #   - run: sfdx force:org:create adminEmail=me@email.com edition=Developer username=admin_user@orgname.org -a TTTT >> $BASH_ENV
+    #   # - run: echo ${CIRCLE_BUILD_NUM}
+    #   # - run: echo ${CIRCLE_PREVIOUS_BUILD_NUM}
+    #   # - run: echo ${CIRCLE_NODE_INDEX}
+    #   - sfdx/scratch-create:
+    #       scratch-alias: circleci1
+    #       scratch-config: ./config/project-scratch-def.json
 
-      # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
-      - sfdx/scratch-open:
-              scratch-alias: circleci1
-      - run: sfdx force:user:password:generate -u circleci1
-      - run:
-         name: 実行時の PATH 書き換えおよび環境変数定義
-         command: |
-          sfdx force:user:password:generate -u circleci1 | sed 's/"/------/g' >> /tmp/ss.txt
-      - run: cat /tmp/ss.txt
+    #   # - run: sfdx force:user:password:generate -u circleci  >> $BASH_ENV
+    #   - sfdx/scratch-open:
+    #           scratch-alias: circleci1
+    #   - run: sfdx force:user:password:generate -u circleci1
+    #   - run:
+    #      name: 実行時の PATH 書き換えおよび環境変数定義
+    #      command: |
+    #       sfdx force:user:password:generate -u circleci1 | sed 's/"/------/g' >> /tmp/ss.txt
+    #   - run: cat /tmp/ss.txt
 
-      # - run:
-      #    name: 実行時の PATH 書き換えおよび環境変数定義
-      #    command: |
-      #     sfdx force:org:list --all  >> /tmp/ss.txt
-      - run: |
-          echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
-          source $BASH_ENV
-      - run: echo $VERY_IMPORTANT
+    #   # - run:
+    #   #    name: 実行時の PATH 書き換えおよび環境変数定義
+    #   #    command: |
+    #   #     sfdx force:org:list --all  >> /tmp/ss.txt
+    #   - run: |
+    #       echo 'export VERY_IMPORTANT=$(cat /tmp/ss.txt)' >> $BASH_ENV
+    #       source $BASH_ENV
+    #   - run: echo $VERY_IMPORTANT
 
-      # - run: sfdx force:org:list >> /tmp/artifacts.txt
-      # - sfdx/scratch-open:
-      #     scratch-alias: circleci
+    #   # - run: sfdx force:org:list >> /tmp/artifacts.txt
+    #   # - sfdx/scratch-open:
+    #   #     scratch-alias: circleci
 
 
-      - slack/notify:
-          channel: '#general'
-          color: '#42e2f4'
-          mentions: 'USERID1,USERID2,'
-          message: '${CIRCLE_BRANCH} $VERY_IMPORTANT'
-          webhook: '${SLACK_WEBHOOK}'
+    #   - slack/notify:
+    #       channel: '#general'
+    #       color: '#42e2f4'
+    #       mentions: 'USERID1,USERID2,'
+    #       message: '${CIRCLE_BRANCH} $VERY_IMPORTANT'
+    #       webhook: '${SLACK_WEBHOOK}'
 
-      - slack/status:
-          fail_only: true
-          mentions: USERID1,USERID2
-          channel: '#general'
-          webhook: '${SLACK_WEBHOOK}'
-          failure_message: 'tttt'
+    #   - slack/status:
+    #       fail_only: true
+    #       mentions: USERID1,USERID2
+    #       channel: '#general'
+    #       webhook: '${SLACK_WEBHOOK}'
+    #       failure_message: 'tttt'
       # - sfdx/scratch-delete:
       #     scratch-alias: circleci
       # - run:
@@ -132,7 +133,7 @@ workflows:
   version: 2
   build-n-deploy:
     jobs:
-      - basic-test:
+      - create-open-delete:
           filters:  # タグフィルター付き、かつ「build」を requires している「deploy」に必要
             tags:
               only: /.*/
