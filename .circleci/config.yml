@@ -128,8 +128,8 @@ jobs:
 orbs:
   sfdx: circleci/salesforce-sfdx@2.0.0
   slack: circleci/slack@3.4.2
-workflows:
   version: 2.1
+workflows:
   build-n-deploy:
   jobs:
     - basic-test:
