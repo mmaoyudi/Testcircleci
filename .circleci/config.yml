@@ -155,7 +155,7 @@ workflows:
       - create-open-delete:
           filters:  # タグフィルター付き、かつ「build」を requires している「deploy」に必要
             tags:
-              ignore: /.*/
+              only: /.*/
             branches:
               only: /.*/
       - create-open-delete1:
