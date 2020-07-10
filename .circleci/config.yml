@@ -128,8 +128,14 @@ jobs:
 orbs:
   sfdx: circleci/salesforce-sfdx@2.0.0
   slack: circleci/slack@3.4.2
-version: 2.1
 workflows:
-  basic-test:
-    jobs:
-      - create-open-delete
+  version: 2.1
+  build-n-deploy:
+  jobs:
+    - basic-test:
+        filters:  # タグフィルター付き、かつ「build」を requires している「deploy」に必要
+          tags:
+            only: /.*/
+  # basic-test:
+  #   jobs:
+  #     - create-open-delete
