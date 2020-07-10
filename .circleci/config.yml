@@ -57,7 +57,7 @@
 #        
 jobs:
   create-open-delete:
-    - run: echo 123
+    - run: echo ${CIRCLE_BUILD_NUM}
     # executor: sfdx/default
     # # environment:
     # #   RES: res
