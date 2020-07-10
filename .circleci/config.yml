@@ -161,6 +161,6 @@ workflows:
       - create-open-delete1:
           filters:
             tags:
-              only: /^v.*/
+              only: /.*/
             branches:
               ignore: /.*/
